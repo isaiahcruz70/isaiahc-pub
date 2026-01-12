@@ -1,2 +1,2 @@
-# isaiahc-pri
-Private repo for instructor only
+# isaiahc-pub
+Public repo for students to view
