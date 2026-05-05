@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meal Decision App</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <main class="container">
+        <header>
+            <h1>Meal Decision App</h1>
+            <p>Fill out the form to get a meal suggestion, and see your history below.</p>
+        </header>
+
+        <section id="results" class="card" style="display: none;">
+            <h2>Decision Result</h2>
+
+            <div class="results-box">
+                <label for="decisionOutput">Your Decision:</label>
+                <input id="decisionOutput" type="text" readonly />
+
+                <label for="healthyOutput">Healthy Priority:</label>
+                <input id="healthyOutput" type="text" readonly />
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Meal Inputs</h2>
+
+            <form id="mealDecisionForm" novalidate>
+                <input type="hidden" id="entryId" />
+
+                <div class="form-row">
+                    <label for="mealBudget">Meal Budget ($)</label>
+                    <input id="mealBudget" name="mealBudget" type="number" />
+                    <span id="mealBudgetError" class="error"></span>
+                </div>
+
+                <div class="form-row">
+                    <label for="timeAvailable">Time Available (minutes)</label>
+                    <input id="timeAvailable" name="timeAvailable" type="number" />
+                    <span id="timeAvailableError" class="error"></span>
+                </div>
+
+                <div class="form-row checkbox-row">
+                    <label for="needQuick">Need Quick?</label>
+                    <input id="needQuick" name="needQuick" type="checkbox" />
+                    <span id="needQuickError" class="error"></span>
+                </div>
+
+                <div class="form-row checkbox-row">
+                    <label for="wantHealthy">Trying to eat healthy?</label>
+                    <input id="wantHealthy" name="wantHealthy" type="checkbox" />
+                    <span id="wantHealthyError" class="error"></span>
+                </div>
+
+                <div class="form-row">
+                    <label for="mealPreference">Meal Preference</label>
+                    <select id="mealPreference" name="mealPreference">
+                        <option value="">Select one...</option>
+                        <option value="home">Eat at home</option>
+                        <option value="takeout">Takeout</option>
+                        <option value="healthy">Healthy</option>
+                        <option value="cheap">Cheap</option>
+                    </select>
+                    <span id="mealPreferenceError" class="error"></span>
+                </div>
+
+                <div class="button-row">
+                    <button type="submit" id="submitButton" class="primary-button">Get Decision</button>
+                    <button type="button" id="clearFormButton" class="secondary-button">Clear Form</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Your Saved Meal Decisions</h2>
+
+            <div class="table-wrapper">
+                <table id="footprintTable" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Budget</th>
+                            <th>Time</th>
+                            <th>Need Quick</th>
+                            <th>Healthy</th>
+                            <th>Preference</th>
+                            <th>Decision</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="history-list"></tbody>
+                </table>
+
+                <p id="noEntriesMessage">No entries saved yet.</p>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+</body>
+
+</html>
